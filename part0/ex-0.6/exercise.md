@@ -33,4 +33,19 @@ sequenceDiagram
 
     Browser->>User: Renders complete webpage
 
+    User->>Browser: Inputs in <input type="text" name="note">: "Hello World SPA"
+    User->>Browser: Clicks <input type="submit" value="Save">
+
+    Browser->>Server: POST /exampleapp/new_note_spa
+    activate Server
+    Server-->>Browser: HTTP 201 Created
+    deactivate Server
+
+    Browser->>Server: GET /exampleapp/data.json (fetch updated notes)
+    activate Server
+    Server-->>Browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, {"content": "Hello World SPA", "date":"2025-02-04T09:16:657Z"}]
+    deactivate Server
+
+    Browser->>User: Shows updated webpage
+
 ```
