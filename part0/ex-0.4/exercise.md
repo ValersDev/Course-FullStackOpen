@@ -29,6 +29,10 @@ Server-->>Browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
 deactivate Server
 
 Browser->>User: Renders complete webpage
+
+User->>Browser: Inputs in <input type="text" name="note">: "Hello World"
+User->>Browser: Clicks <input type="submit" value="Save">
+
 Browser->>Server: POST /exampleapp/new_note
 activate Server
 Server-->>Browser: HTTP 201 Created
